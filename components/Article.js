@@ -148,3 +148,10 @@ function articleMaker(object) {
 
 console.log(articleMaker())
 
+// Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
+// to create a div.article element and append it to the DOM inside div.articles (see index.html).
+data.forEach(object => {
+  console.log('data', object);
+  articles.appendChild(articleMaker(object.data));
+  // article.appendChild(createCard(data.title, data.subtitle, data.content, data.imgsrc));
+});
