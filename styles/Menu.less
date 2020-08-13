@@ -18,6 +18,39 @@
   z-index: 2; /* This set the layer level of the element, it has precendence over initial level of 1*/
 }
 
+.menu-in {
+  animation-duration: 1s;
+  animation-name: slidein;
+  left: 0px;
+}
+
+.menu-out {
+ 
+  animation-duration: 1s;
+  animation-name: slideout;
+  // left: 0px;
+}
+
+
+@keyframes slidein {
+  from {
+    margin-left: -350px;
+  }
+
+  to {
+    margin-left: 0px;
+  }
+}
+  @keyframes slideout {
+    from {
+      margin-left: 350px;
+    }
+  
+    to {
+      margin-left: -350px;
+    }
+  }
+
 .menu ul li{
   list-style-type: none;
   font-size: 32px;

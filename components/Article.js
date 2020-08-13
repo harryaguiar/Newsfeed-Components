@@ -161,7 +161,7 @@ function articleMaker(article) {
   articleDiv.appendChild(articleContent3);
   articleDiv.appendChild(articleButton);
 
-  articleButton.textContent = '+'
+  articleButton.textContent = '+';
 
   // Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   // This listener should toggle the class 'article-open' on div.article.
