@@ -86,6 +86,19 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  // Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
+  // Refresh the page to see the new article.
+  {
+    title: 'App reads grocery labels for blind people',
+    date: 'Aug 12th, 2020',
+    firstParagraph: `It is part of Google's Lookout app, which aims to help those with low or no vision identify things around them. `,
+
+    secondParagraph: `A new update has added the ability for a computer voice to say aloud what food it thinks a person is holding based on its visual appearance.
+    One UK blindness charity welcomed the move, saying it could help boost blind people's independence. `,
+
+    thirdParagraph: `Google says the feature will "be able to distinguish between a can of corn and a can of green beans".`
+
   }
 ];
 
@@ -117,41 +130,54 @@ const data = [
 
 const articles = document.querySelector('.articles');
 
-function articleMaker(object) {
-  const article = document.createElement('div');
-    article.classList.add('article');
+function articleMaker(article) {
+  const articleDiv = document.createElement('div');
+  articleDiv.classList.add('article');
+  
   const articleTitle = document.createElement('h2');
+  articleTitle.textContent = article.title;
+
   const articleDate = document.createElement('p');
-    articleDate.classList.add('date');
-  const articleContent = document.createElement('p');
+  articleDate.classList.add('date');
+  articleDate.textContent = article.date;
+
   const articleContent1 = document.createElement('p');
+  articleContent1.textContent = article.firstParagraph;
+
   const articleContent2 = document.createElement('p');
+  articleContent2.textContent = article.secondParagraph;
+
+  const articleContent3 = document.createElement('p');
+  articleContent3.textContent = article.thirdParagraph;
+
   const articleButton = document.createElement('span');
   articleButton.classList.add('expandButton');
 
 
-  article.append(articleTitle);
-  article.append(articleDate);
-  article.append(articleContent);
-  article.append(articleContent1);
-  article.append(articleContent2);
-  article.append(articleButton);
+  articleDiv.appendChild(articleTitle);
+  articleDiv.appendChild(articleDate);
+  articleDiv.appendChild(articleContent1);
+  articleDiv.appendChild(articleContent2);
+  articleDiv.appendChild(articleContent3);
+  articleDiv.appendChild(articleButton);
 
   articleButton.textContent = '+'
 
+  // Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
+  // This listener should toggle the class 'article-open' on div.article.
+
   articleButton.addEventListener('click', e => {
-    article.classList.toggle('article-open');
+    articleDiv.classList.toggle('article-open');
   })
 
-  return article;
+  // Step 3: Don't forget to return something from your function!
+  return articleDiv;
 }
 
-console.log(articleMaker())
+// console.log(articleMaker())
 
 // Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
 // to create a div.article element and append it to the DOM inside div.articles (see index.html).
-data.forEach(object => {
-  console.log('data', object);
-  articles.appendChild(articleMaker(object.data));
-  // article.appendChild(createCard(data.title, data.subtitle, data.content, data.imgsrc));
+data.forEach(articleData => {
+  articles.appendChild(articleMaker(articleData));
 });
